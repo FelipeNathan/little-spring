@@ -6,7 +6,7 @@ import com.example.demo.factory.ProxyFactory.ANSI_RED
 import com.example.demo.factory.ProxyFactory.ANSI_RESET
 
 @MyAround
-open class SecondAroundMethod : MyAspect() {
+class SecondAroundMethod : MyAspect() {
 
     override fun execute(joinpoint: AroundJoinpoint) {
         println("${ANSI_RED}Executing another (before) @Around$ANSI_RESET")
