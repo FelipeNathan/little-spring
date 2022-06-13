@@ -34,7 +34,7 @@ object ProxyFactory {
 
         return ProxyCache.getClassOrElse(clazz) {
             val constructor = clazz.declaredConstructors.first()
-            val params = findInstanceParameters(constructor)
+            val params = findConstructorParameters(constructor)
 
             println("${ANSI_GREEN}Creating a brand new ${clazz.simpleName}${ANSI_RESET}")
             val instance = constructor.newInstance(*params)
@@ -68,7 +68,7 @@ object ProxyFactory {
     * obs: não foi feito nada para parâmetros de tipos primitivos,
     * visto que é apenas para estudo de reflection e "simulação" do spring
     * */
-    fun findInstanceParameters(constructor: Constructor<*>): Array<Any> {
+    fun findConstructorParameters(constructor: Constructor<*>): Array<Any> {
         return constructor
             .parameters
             .map {
