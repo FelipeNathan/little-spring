@@ -4,8 +4,9 @@ annotation class Loggable
 
 // Spring Copy
 annotation class MyComponent
-annotation class MyBefore
-annotation class MyAfter
-annotation class MyAround
+
+annotation class MyBefore(val component: String = "")
+annotation class MyAfter(val component: String = "")
+annotation class MyAround(val component: String = "")
 
 annotation class MyQualifier(val beanName: String)

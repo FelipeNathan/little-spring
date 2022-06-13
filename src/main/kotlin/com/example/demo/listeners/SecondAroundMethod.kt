@@ -8,11 +8,11 @@ import com.example.demo.factory.ProxyFactory.ANSI_RESET
 @MyAround
 class SecondAroundMethod : MyAspect() {
 
-    override fun execute(joinpoint: AroundJoinpoint) {
+    override fun execute(joinPoint: AroundJoinpoint) {
         println("${ANSI_RED}Executing another (before) @Around$ANSI_RESET")
         val someRule = true
         if (someRule)
-            joinpoint.proceed()
+            joinPoint.proceed()
         println("${ANSI_RED}Executing another (after) @Around$ANSI_RESET")
         println("""${ANSI_CYAN}This is "executing AROUND" the method$ANSI_RESET""")
     }

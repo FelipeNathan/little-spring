@@ -17,11 +17,11 @@ fun main() {
 
     repeat(5) { print("@") }
     println(response)
-//    val loggableClass = ProxyFactory.getBean<LoggableClass>() as Log
-//    loggableClass.annotated("Executed from LoggableClass")
-//    loggableClass.multipleArgsAnnotated("mylittlestring", true, 30)
-//
-//    val notLoggableClass = ProxyFactory.getBean<NotLoggableClass>() as Log
-//    notLoggableClass.annotated("Executed from NotLoggableClass")
-//    notLoggableClass.notAnnotated("Executed from NotLoggableClass")
+    val loggableClass = ProxyFactory.getBean<LoggableClass>() as Log
+    loggableClass.annotated("Executed from LoggableClass")
+    loggableClass.multipleArgsAnnotated("mylittlestring", true, 30)
+
+    val notLoggableClass = ProxyFactory.getBean<NotLoggableClass>() as Log
+    notLoggableClass.annotated("Executed from NotLoggableClass")
+    notLoggableClass.notAnnotated("Executed from NotLoggableClass")
 }

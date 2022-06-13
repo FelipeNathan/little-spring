@@ -2,5 +2,5 @@ package com.example.demo.listeners
 
 abstract class MyAspect {
     open fun execute() {}
-    open fun execute(joinpoint: AroundJoinpoint) {}
+    open fun execute(joinPoint: AroundJoinpoint) {}
 }

@@ -16,7 +16,7 @@ class WithDependency(
     }
 
     override fun annotated(a: String): String {
-        //loggable.annotated(a)
+        loggable.annotated(a)
         return "Executed with success"
     }
 }

@@ -100,15 +100,16 @@ object ProxyFactory {
         var retVal: Any? = null
 
         // Executa o @Before do @Aspect
-        executeBefore()
+        val methodInstancePath = getInstanceMethod(instance, method).toString()
+        executeBefore(methodInstancePath)
         // O @Around do @Aspect faz um tipo de "wrap" do `method.invoke`
-        executeAround {
+        executeAround(methodInstancePath) {
             print("Invoking method ${method.name}: ")
             retVal = method.invoke(instance, *args)
             println()
         }
         // Execute o @After do @Aspect
-        executeAfter()
+        executeAfter(methodInstancePath)
 
         if (checkAnnotationOnMethod(instance, method, Loggable::class.java)) {
             val mapArgs = args.joinToString("\n") { "type: ${it.javaClass.simpleName}, value: $it" }
@@ -122,5 +123,9 @@ object ProxyFactory {
     private fun <T> checkAnnotationOnMethod(instance: T, method: Method, ann: Class<out Annotation>): Boolean {
         val instanceMethod = instance!!::class.java.getMethod(method.name, *method.parameterTypes)
         return instanceMethod.isAnnotationPresent(ann)
+    }
+
+    private fun <T> getInstanceMethod(instance: T, method: Method): Method {
+        return instance!!::class.java.getMethod(method.name, *method.parameterTypes)
     }
 }
